@@ -42,3 +42,19 @@ exports.updateUserService = (data, callback) => {
         }
     )
 }
+
+// userdelete
+exports.deleteUserService = (id, callback) => {
+    pool.query(DBquery.UsersDeleteQuery,
+        id,
+        (error, results, field) => {
+            if (error) {
+                console.log(error)
+                callback(error)
+            }
+            console.log(results)
+            callback(null, results)
+        }
+
+    )
+}

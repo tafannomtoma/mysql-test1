@@ -43,3 +43,21 @@ exports.updateUserController = (req, res) => {
     })
 
 }
+
+// database delete
+exports.deleteUserController = (req, res) => {
+    const id = req.params.id
+    Services.deleteUserService(id, (error, results) => {
+        if (error) {
+            console.log(error)
+            return res.json({
+                success: 0,
+                message: "Database connection failed."
+            })
+        }
+        return res.json({
+            success: 1,
+            message: "Client record successfully deletd."
+        })
+    })
+}
